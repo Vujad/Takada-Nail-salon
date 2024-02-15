@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⊛小高田美甲⊛</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <button class="menu">&#9776;</button>
+        <h1>⊛小高田美甲⊛</h1>
+        <nav>
+            <ul>
+                <li><a href="#new-section">⊛首頁</a></li>
+                <li><a href="#shop-section">⊛關於美甲</a></li>
+                <li class="dropdown">
+                    <a href="#product-section">⊛風格選擇</a>
+                    <div class="dropdown-content">
+                        <a href="./shop1.html">日系美甲</a>
+                        <a href="./shop2.html">歐美美甲</a>
+                        <a href="./shop3.html">裸色日常美甲</a>
+                    </div>
+                </li>
+                <li><a href="#know-section">⊛預約須知</a></li>
+                <li><a href="#plat-section">⊛其他平台</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+
+    <main>
+        <section class="news" id="new-section">
+            <h2>⊛日式美甲美學⊛</h2>
+            <p>-傳統經典與現代元素交織的藝術-</p>
+            <p><a href="shop1.html" class="zoom-bounce">所有款式</a></p>
+        </section>
+
+        <section class="slogan">
+            <blockquote>" 指尖上的藝術，讓每一刻閃耀 "<br>美甲是一種個人故事和情感的展現，每一款設計都代表著顧客的獨特性。 </blockquote>
+        </section>
+
+        <section class="shop" id="shop-section">
+            <div class="carousel">
+                <div class="container">
+                    <a href="" target="_blank"><img src="./a.jpg" /></a>
+                    <a href="" target="_blank"><img src="./b.jpg" /></a>
+                    <a href="" target="_blank"><img src="./c.jpg" /></a>
+                    <a href="" target="_blank"><img src="./d.jpg" /></a>
+                </div>
+                <div class="shift">
+                    <div class="btn left" onclick="leftShift()">&lt;</div>
+                    <div class="btn right" onclick="rightShift()">&gt;</div>
+                </div>
+                <div class="bottom"></div>
+            </div>
+            <style>
+                .carousel {
+                    width: 1024px;
+                    height: 850px;
+                    overflow: hidden;
+                    position: relative;
+                }
+
+                .carousel .container {
+                    width: 100%;
+                    height: 100%;
+                    position: relative;
+                    left: 0;
+                    display: flex;
+                    transition: all 1s;
+                }
+
+                .carousel .container a {
+                    width: 100%;
+                    height: 100%;
+                    flex-shrink: 0;
+                }
+
+                .carousel .container a img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+
+                .carousel .shift .btn {
+                    /* 绝对定位且垂直居中 */
+                    position: absolute;
+                    top: 0;
+                    bottom: 0;
+                    margin: auto 0;
+                    background-color: #ffdead;
+                    ;
+                    color: #86a697;
+                    width: 50px;
+                    height: 50px;
+                    border-radius: 8px;
+                    font-size: 40px;
+                    font-weight: bold;
+                    /* 字符水平垂直居中 */
+                    line-height: 50px;
+                    text-align: center;
+                    cursor: pointer;
+                    user-select: none;
+                    /* 不透明度 0.5 */
+                    opacity: 0.5;
+                }
+
+                .carousel .shift .left {
+                    left: 20px;
+                }
+
+                .carousel .shift .right {
+                    right: 20px;
+                }
+
+                .carousel .bottom {
+                    position: absolute;
+                    bottom: 20px;
+                    /* 绝对定位水平居中 */
+                    left: 0;
+                    right: 0;
+                    margin: 0 auto;
+                    /* 宽度等同于内容宽度 */
+                    width: max-content;
+                    display: flex;
+                    /* 指示器间距 */
+                    gap: 10px;
+                }
+
+                .carousel .bottom .indicator {
+                    height: 5px;
+                    width: 40px;
+                    background-color: teal;
+                    opacity: 0.5;
+                    cursor: pointer;
+                }
+
+                .carousel:hover .bottom .indicator {
+                    opacity: 1;
+                }
+
+                .carousel:hover .shift .btn {
+                    opacity: 1;
+                }
+            </style>
+            <script>
+                // 显示的图片下标
+                let index = 0
+                // 图片的数量
+                let imageCount = document.querySelectorAll(
+                    ".carousel .container img"
+                ).length
+                const bottom = document.querySelector(".carousel .bottom")
+                for (let i = 0; i < imageCount; i++) {
+                    const indicator = document.createElement("div")
+                    indicator.classList.add("indicator")
+                    indicator.onclick = () => setIndex(i)
+                    bottom.append(indicator)
+                }
+                function createAuto() {
+                    return setInterval(() => {
+                        index++
+                        refresh()
+                    }, 3000)
+                }
+                // 自动滚动
+                let autoTimer = createAuto()
+                function refresh() {
+                    if (index < 0) {
+                        // 下标小于 0 时
+                        // 设置最右的图片
+                        index = imageCount - 1
+                    } else if (index >= imageCount) {
+                        // 下标超过上限时
+                        // 设置最左的图片
+                        index = 0
+                    }
+                    // 获取轮播框元素
+                    let carousel = document.querySelector(".carousel")
+                    //获取轮播框的宽度
+                    let width = getComputedStyle(carousel).width
+                    width = Number(width.slice(0, -2))
+                    carousel.querySelector(".container").style.left =
+                        index * width * -1 + "px"
+                }
+                let refreshWrapper = (func) => {
+                    // refresh 装饰器
+                    return function (...args) {
+                        let result = func(...args)
+                        refresh()
+                        // 重置自动滚动
+                        clearInterval(autoTimer)
+                        autoTimer = createAuto()
+                        return result
+                    }
+                }
+                let leftShift = refreshWrapper(() => {
+                    index--
+                })
+                let rightShift = refreshWrapper(() => {
+                    index++
+                })
+                let setIndex = refreshWrapper((idx) => {
+                    index = idx
+                })
+                refresh()
+            </script>
+            <div class="info">
+                <h2 class="typewriter">⊛關於美甲⊛
+                    <br>
+                    美甲的歷史
+                    <br>
+                    經歷了許多階段和文化影響</h2>
+                <p class="typewriter">
+                    <br>⊛古代美甲⊛<br>
+                    在古代埃及，大約公元前5000年至公元前3000年間，指甲的顏色被用來表示社會階級。貴族通常會涂上深色的指甲油，而低階層則使用淺色。
+                    古代中國也有美甲的記錄，當時人們使用蜂蠟、蛋清、明膠、植物染料和阿拉伯膠來上色。
+                    <br>⊛19世紀的發展⊛<br>
+                    到了19世紀，歐洲和美國的婦女開始使用粉紅色的護甲油和護甲霜來改善指甲的外觀。
+                    這一時期也見證了法式美甲的起源，最初的法式美甲是將指甲尖漆成白色。
+                    <br>⊛20世紀的創新⊛<br>
+                    20世紀初，現代指甲油的前身出現了。它是由汽車漆衍生而來的產品。
+                    1932年，Revlon推出了第一款現代指甲油，開創了彩色指甲油的潮流。
+                    20世紀下半葉，美甲藝術開始流行涌現了各種裝飾性和創意的設計。
+                    <br>⊛近代與當代趨勢⊛<br>
+                    近年來，美甲成為了一種流行的自我表達方式，涵蓋了從簡約的單色到複雜的圖案設計。
+                    現代科技的發展也促進了美甲行業的創新，例如UV/LED固化的凝膠指甲油、水轉印技術等。
+                    隨著技術的進步和流行文化的影響，美甲的風格和技術持續進化。
+                </p>
+            </div>
+
+        </section>
+
+
+        <section class="product" id="product-section">
+            <h2>⊛風格選擇⊛<br>
+                <span class="bounce">點選前往專頁看更多☞</span>
+            </h2>
+
+            <br>
+            <div>
+                <a href="shop1.html"> <!-- 链接到日系美甲的页面 -->
+                    <img src="s3.jpg" alt="日系美甲" data-hover-src="s4.jpg">
+                </a>
+                <h3>日系美甲</h3>
+                <p>日系美甲以其精緻和細膩的設計而聞名。這種風格經常融合柔和的色彩、透明感和可愛的裝飾，如小花、珍珠或閃亮的小石。它們通常展現出一種柔和、夢幻般的美感，非常適合追求細節和女性化風格的人士。</p>
+            </div>
+            <div>
+                <a href="shop2.html">
+                    <img src="o9.jpg" data-hover-src="o10.jpg">
+                </a>
+                <h3>歐美美甲</h3>
+                <p>歐美美甲風格強調大膽和創新。這種風格喜歡使用鮮明的顏色、大膽的圖案和時尚元素。從簡潔的幾何設計到醒目的閃亮裝飾，歐美美甲是那些喜歡實驗和在人群中脫穎而出的時尚愛好者的理想選擇。</p>
+            </div>
+            <div>
+                <a href="shop3.html">
+                    <img src="l.jpg" data-hover-src="ll.jpg">
+                </a>
+                <h3>裸色日常美甲</h3 <p>
+                裸色日常美甲是一種優雅和低調的選擇，非常適合日常佩戴。這種風格使用接近膚色的淡雅色調，創造出自然和諧的外觀。它們簡單、時尚，且易於搭配各種服裝，非常適合追求自然美和簡約風格的人士。</p>
+            </div>
+        </section>
+
+        <section class="slogan">
+           <h2><blockquote>⊛預約須知⊛</blockquote></h2>
+        </section>
+
+        <section class="know" id="know-section">
+            <div>
+                <img src="./know.jpg" alt="顧客須知" id="knowImage" style="cursor: pointer;">
+            </div>
+        </section>
+
+        <!-- 彈出視窗，用於顯示放大的圖片 -->
+        <div id="myModal" class="modal">
+            <span class="close">&times;</span>
+            <img class="modal-content" id="img01">
+            <div id="caption"></div>
+        </div>
+
+        <section id="google-map-section">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d532.7855439332063!2d120.68762449121627!3d24.143059991313283!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34693da9491a266d%3A0x2f19fa881376b242!2z5bCP6auY55Sw576O55SyIHwgVGFrYWRhIG5haWw!5e0!3m2!1szh-TW!2stw!4v1699870232721!5m2!1szh-TW!2stw"
+                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </section>
+
+        <section class="plat" id="plat-section">
+            <h2>⊛其他平台⊛</h2>
+            <div>
+                <h3>加line預約</h3>
+                <a href="https://line.me/R/ti/p/@243mmnfo?from=page&accountId=243mmnfo" target="_blank">
+
+                    <img src="./line.jpg" alt="line">
+                    <i class="fa-brands fa-line fa-beat-fade fa-2xl" style="color: #000000;"></i>
+                </a>
+            </div>
+            <div>
+                <h3>到ＩＧ看更多作品</h3>
+                <a href="https://www.instagram.com/takadanails/" target="_blank">
+                    <img src="./ig.jpg" alt="ig">
+                    <i class="fa-brands fa-instagram fa-beat-fade fa-2xl" style="color: #000000;"></i>
+                </a>
+            </div>
+            <div>
+                <h3>到ＹＴ觀看實做影片</h3>
+                <a href="https://www.youtube.com/shorts/4coVPDte_Gw?app=desktop&si=E0UkJ1B0UM4leVGU" target="_blank">
+                    <img src="./yt.jpg" alt="yt">
+                    <i class="fa-brands fa-youtube fa-beat-fade fa-2xl" style="color: #000000;"></i>
+                </a>
+            </div>
+        </section>
+
+        <section class="newsletter" id="newsletter-section">
+            <p>⊛顧客意見回饋⊛</p>
+            <form>
+                <input type="email" placeholder="請輸入訊息" required>
+                <button type="submit">送出</button>
+            </form>
+            <br>
+            <div>
+            </div>
+            <link rel="stylesheet"
+                href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        </section>
+    </main>
+    <footer>
+        <p>Copyright © 2023 小高田美甲 All Rights Reserved.</p>
+    </footer>
+
+    <!-- //js -->
+
+    <script>
+        window.addEventListener('scroll', function () {
+            var image = document.querySelector('.know img');
+            var imagePosition = image.getBoundingClientRect();
+
+            // 檢查圖片是否進入視窗
+            if (imagePosition.top < window.innerHeight && imagePosition.bottom >= 0) {
+                image.classList.add('visible');
+            }
+        });
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // 獲取所有導航鏈接
+            var navLinks = document.querySelectorAll('nav ul li a');
+
+            // 為每個鏈接添加點擊事件監聽器
+            navLinks.forEach(function (link) {
+                link.addEventListener('click', function (e) {
+                    // 防止默認的跳轉行為
+                    e.preventDefault();
+
+                    // 獲取被點擊鏈接的href屬性值（即錨點的ID）
+                    var targetId = this.getAttribute('href');
+                    var targetElement = document.querySelector(targetId);
+
+                    // 使用scrollIntoView方法平滑滾動到該元素
+                    if (targetElement) {
+                        targetElement.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+        });
+    </script>
+
+    <script>
+        var images = [
+            "./b2.jpg",  // 替換為您的第二張圖片路徑
+            "./b3.jpg",  // 替換為您的第三張圖片路徑
+            "./b4.jpg",  // 替換為您的第三張圖片路徑
+            "./b5.jpg", // 替換為您的第三張圖片路徑
+            "./b6.jpg", // 替換為您的第三張圖片路徑
+            "./b7.jpg", // 替換為您的第三張圖片路徑
+        ];
+        var currentIndex = 0;
+
+        function changeBackgroundImage() {
+            currentIndex = (currentIndex + 1) % images.length;
+            document.querySelector('.news').style.backgroundImage = 'url("' + images[currentIndex] + '")';
+        }
+
+        setInterval(changeBackgroundImage, 3000); // 每5秒更換一次背景圖片
+    </script>
+
+
+    <script>
+        document.querySelectorAll('.product img').forEach(function (img) {
+            var originalSrc = img.src;
+            var hoverSrc = img.getAttribute('data-hover-src');
+            img.addEventListener('mouseenter', function () {
+                img.src = hoverSrc;
+            });
+            img.addEventListener('mouseleave', function () {
+                img.src = originalSrc;
+            });
+        });
+    </script>
+    <script>// 獲取彈出視窗元素
+        var modal = document.getElementById("myModal");
+
+        // 獲取圖片並插入到彈出視窗 - 使用 "alt" 文字作為標題
+        var img = document.getElementById("knowImage");
+        var modalImg = document.getElementById("img01");
+        var captionText = document.getElementById("caption");
+        img.onclick = function () {
+            if (modal.style.display === "block") {
+                modal.style.display = "none";
+            } else {
+                modal.style.display = "block";
+                modalImg.src = this.src;
+                captionText.innerHTML = this.alt;
+            }
+        }
+
+        // 獲取 <span> 元素，設置關閉按鈕
+        var span = document.getElementsByClassName("close")[0];
+
+        // 當點擊 (x), 關閉彈出視窗
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+
+        // 當點擊彈出視窗外的任何地方時，也可以關閉彈出視窗
+        window.onclick = function (event) {
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
