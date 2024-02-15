@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>⊛小高田美甲⊛日系美甲</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <header>
+            <button class="menu">&#9776;</button>
+            <h1>⊛小高田美甲⊛日系美甲</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">首頁</a></li>
+                    <li><a href="shop1.html">⊛日系美甲⊛</a></li>
+                    <li><a href="shop2.html">歐美美甲</a></li>
+                    <li><a href="shop3.html">裸色日常美甲</a></li>
+                </ul>
+            </nav>
+        </header>
+       <section class="title">
+        <br><br><br><br>
+        <h2>⊛日系美甲⊛</h2> 
+        <p>日系美甲以其精緻和細膩的設計而聞名。這種風格經常融合柔和的色彩、透明感和可愛的裝飾
+            <br>如小花、珍珠或閃亮的小石。它們通常展現出一種柔和、夢幻般的美感，非常適合追求細節和女性化風格的人士。</p>
+  
+       </section>
+        
+       <section class="product1" id="product1-section">
+        <div><img src="j1.jpg" data-hover-src="j2.jpg" >日系1 <br>TW:1100</a></div>
+        <div><img src="j3.jpg" data-hover-src="j4.jpg" >日系2 <br>TW:1200</a></div>
+        <div><img src="j5.jpg" data-hover-src="j6.jpg">日系3 <br>TW:1300</a></div>
+      </section>
+      <section class="product1" id="product1-section">
+        <div><img src="j7.jpg" data-hover-src="j8.jpg">日系4 <br>TW:1200</a></div>
+        <div><img src="j9.jpg" data-hover-src="j10.jpg">日系5 <br>TW:1200</a></div>
+        <div><img src="j11.jpg" data-hover-src="j12.jpg">日系6 <br>TW:1100</a></div>
+      </section>
+       
+
+        <section class="title">
+            <div>
+                <h2>加line預約</h2>
+                <a href="https://line.me/R/ti/p/@243mmnfo?from=page&accountId=243mmnfo" target="_blank">
+
+                    <img src="./line.jpg" alt="line">
+                    <i class="fa-brands fa-line fa-beat-fade fa-2xl" style="color: #000000;"></i>
+                </a>
+            </div>
+            <div>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">回到首頁🔙</a></li>
+                    </ul>
+                </nav>
+                
+           </section>
+        <footer>
+            <p>Copyright © 2023 小高田美甲 All Rights Reserved.</p>
+        </footer>
+
+        <script>
+            document.querySelectorAll('.product1 img').forEach(function (img) {
+                var originalSrc = img.src;
+                var hoverSrc = img.getAttribute('data-hover-src');
+                img.addEventListener('mouseenter', function () {
+                    img.src = hoverSrc;
+                });
+                img.addEventListener('mouseleave', function () {
+                    img.src = originalSrc;
+                });
+            });
+        </script>
+          
+
+</body>
+</html>

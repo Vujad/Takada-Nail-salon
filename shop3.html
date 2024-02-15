@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>⊛小高田美甲⊛裸色日常美甲</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <header>
+            <button class="menu">&#9776;</button>
+            <h1>⊛小高田美甲⊛裸色日常美甲</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">首頁</a></li>
+                    <li><a href="shop1.html">日系美甲</a></li>
+                    <li><a href="shop2.html">歐美美甲</a></li>
+                    <li><a href="shop3.html">⊛裸色日常美甲⊛</a></li>
+                </ul>
+            </nav>
+        </header>
+        <section class="title">
+        <br><br><br><br>
+            <h2>⊛裸色日常美甲⊛</h2> 
+            <p>裸色日常美甲是一種優雅和低調的選擇，非常適合日常佩戴。
+                <br>這種風格使用接近膚色的淡雅色調，創造出自然和諧的外觀。它們簡單、時尚，且易於搭配各種服裝，非常適合追求自然美和簡約風格的人士。</p>
+      
+    
+                <section class="product3" id="product3-section">
+                    <div><img src="l1.jpg" data-hover-src="l2.jpg" >裸色日常1 <br>TW:1100</a></div>
+                    <div><img src="l3.jpg" data-hover-src="l4.jpg" >裸色日常2 <br>TW:1200</a></div>
+                    <div><img src="l5.jpg" data-hover-src="l6.jpg">裸色日常3 <br>TW:1300</a></div>
+                  </section>
+                  <section class="product3" id="product3-section">
+                    <div><img src="l7.jpg" data-hover-src="l8.jpg">裸色日常4 <br>TW:1200</a></div>
+                    <div><img src="l9.jpg" data-hover-src="l10.jpg">裸色日常5 <br>TW:1200</a></div>
+                    <div><img src="l11.jpg" data-hover-src="l12.jpg">裸色日常6 <br>TW:1100</a></div>
+                    
+                  </section>
+                   
+            
+                    <section class="title">
+                        <div>
+                            <h2>加line預約</h2>
+                            <a href="https://line.me/R/ti/p/@243mmnfo?from=page&accountId=243mmnfo" target="_blank">
+            
+                                <img src="./line.jpg" alt="line">
+                                <i class="fa-brands fa-line fa-beat-fade fa-2xl" style="color: #000000;"></i>
+                            </a>
+                        </div>
+                        <div>
+                            <nav>
+                                <ul>
+                                    <li><a href="index.html">回到首頁🔙</a></li>
+                                </ul>
+                            </nav>
+                       </section>
+                    <footer>
+                        <p>Copyright © 2023 小高田美甲 All Rights Reserved.</p>
+                    </footer>
+            
+                    <script>
+                        document.querySelectorAll('.product3 img').forEach(function (img) {
+                            var originalSrc = img.src;
+                            var hoverSrc = img.getAttribute('data-hover-src');
+                            img.addEventListener('mouseenter', function () {
+                                img.src = hoverSrc;
+                            });
+                            img.addEventListener('mouseleave', function () {
+                                img.src = originalSrc;
+                            });
+                        });
+                    </script>
+
+            <!-- <section class="title">
+                <div>
+                    <nav>
+                        <ul>
+                            <li><a href="index.html">回到首頁🔙</a></li>
+                        </ul>
+                    </nav>
+               </section>
+            <footer>
+                <p>Copyright © 2023 小高田美甲 All Rights Reserved.</p>
+            </footer> -->
+</body>
+</html>
